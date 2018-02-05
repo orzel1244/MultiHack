@@ -7,12 +7,14 @@ ApplicationWindow {
     height: 480
     title: qsTr("MultiHack")
     Button {
-        text: "turn on"
+        text: "TriggerBot: Disabled"
         onClicked: {
             if(triggerbot.isEnabled()){
                 triggerbot.setEnabled(false);
+                text = "TriggerBot: Disabled";
             } else {
                 triggerbot.setEnabled(true);
+                text = "TriggerBot: Enabled"
             }
         }
     }
