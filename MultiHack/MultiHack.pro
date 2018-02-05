@@ -13,7 +13,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += main.cpp \
-    class/Offsets/offsets.cpp
+    class/Offsets/offsets.cpp \
+    class/Manager/manager.cpp \
+    class/TriggerBot/triggerbot.cpp
 
 RESOURCES += qml.qrc
 
@@ -29,4 +31,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    class/Offsets/offsets.h
+    class/Offsets/offsets.h \
+    class/Manager/manager.h \
+    class/TriggerBot/triggerbot.h
+
+LIBS += -LC:/OpenSSL-Win32/lib/MinGW -leay32
+INCLUDEPATH += C:/OpenSSL-Win32/include/openssl

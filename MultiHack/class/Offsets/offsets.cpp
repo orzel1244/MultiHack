@@ -1,6 +1,6 @@
 #include "offsets.h"
 
-Offsets::Offsets(QObject *parent){
+Offsets::Offsets(){
     manager = new QNetworkAccessManager(this);
     update();
 }
@@ -49,6 +49,7 @@ int Offsets::getAddress(QString name){
         // ..?
         // TODO: Tu czekać na gotHttp() a potem rekurencyjnie odpalić tą samą funkcje
         //connect(reply, SIGNAL(finished()),    ));
+
     }
     return 404;
 }
@@ -60,4 +61,5 @@ void Offsets::gotHttp() {
         stream << reply->readAll();
         file.close();
     }
+    emit ready();
 }

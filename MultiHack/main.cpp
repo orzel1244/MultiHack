@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <class/Offsets/offsets.h>
+#include <class/Manager/manager.h>
+#include <QQmlContext>
 
 int main(int argc, char *argv[]){
 
@@ -9,15 +11,11 @@ int main(int argc, char *argv[]){
 #endif
 
     QGuiApplication app(argc, argv);
-
-    Offsets ofssets;
-    qDebug() << ofssets.getAddress("dwLocalPlayer"); // TODO: Zrobic że jeżeli nie ma pliku, to żeby
-                                                     // czekało na SLOT(gotHttp()) a potem rekurencyjnie
-                                                     // wykonało samo siebie
-
-
-
     QQmlApplicationEngine engine;
+    QQmlContext* ctx = engine.rootContext();
+    Manager mgr(ctx);
+    ctx->setContextProperty("manager", &mgr);
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

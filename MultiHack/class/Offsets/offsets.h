@@ -16,11 +16,11 @@
 class Offsets : public QObject {
     Q_OBJECT
 public:
-    explicit Offsets(QObject *parent = nullptr);
+    Offsets();
     void update();
 
 signals:
-
+    void ready();
 public slots:
     int getAddress(QString name);
     void gotHttp();
