@@ -7,12 +7,18 @@ TriggerBot::TriggerBot(Offsets *off, Memory *mem) : QObject(off) {
 
 void TriggerBot::shoot(){
     mouse_event(MOUSEEVENTF_LEFTDOWN,NULL,NULL,NULL,NULL);
-    Sleep(15); //Delay between shots
+    Sleep(afterDelay); //Delay between shots
     mouse_event(MOUSEEVENTF_LEFTUP, NULL, NULL, NULL, NULL);
 }
 
-void TriggerBot::setDelay(int value){
-    delay = value;
+void TriggerBot::setAfterDelay(int value)
+{
+    afterDelay = value;
+}
+
+void TriggerBot::setBeforeDelay(int value)
+{
+    beforeDelay = value;
 }
 
 
@@ -34,7 +40,7 @@ void TriggerBot::loop(){
                 if(entTeam != playerTeam){
                     //                trigger
                     qDebug() << "shoot";
-                    Sleep(delay);
+                    Sleep(beforeDelay);
                     if(isPlayerScoping){
                         Sleep(150); // additional 150 ms for scopers.
                     }

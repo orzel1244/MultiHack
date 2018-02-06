@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>components/CustomTabButton.qml</file>
+        <file>components/CustomButton.qml</file>
     </qresource>
 </RCC>

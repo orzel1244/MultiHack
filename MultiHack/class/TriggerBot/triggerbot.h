@@ -11,14 +11,18 @@ class TriggerBot : public QObject{
 public:
     explicit TriggerBot(Offsets *off, Memory *mem);
 
-    void setDelay(int value);
+
+    void setBeforeDelay(int value);
+
+    void setAfterDelay(int value);
 
 private:
     Offsets* m_offsets;
     Memory* m_memory;
     bool enabled=false;
     void shoot();
-    int delay=20;
+    int beforeDelay=20;
+    int afterDelay=20;
 private slots:
     void loop();
 public slots:
