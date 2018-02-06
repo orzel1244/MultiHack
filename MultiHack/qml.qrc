@@ -4,5 +4,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>components/CustomTabButton.qml</file>
         <file>components/CustomButton.qml</file>
+        <file>components/CustomSpinBox.qml</file>
     </qresource>
 </RCC>
