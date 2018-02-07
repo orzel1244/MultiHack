@@ -7,8 +7,9 @@ TriggerBot::TriggerBot(Offsets *off, Memory *mem) : QObject(off) {
 
 void TriggerBot::shoot(){
     mouse_event(MOUSEEVENTF_LEFTDOWN,NULL,NULL,NULL,NULL);
-    Sleep(afterDelay); //Delay between shots
+    Sleep(10);
     mouse_event(MOUSEEVENTF_LEFTUP, NULL, NULL, NULL, NULL);
+    Sleep(afterDelay);
 }
 
 // 5832996 - scout
@@ -52,11 +53,9 @@ bool TriggerBot::isEnabled(){
 }
 
 void TriggerBot::setAfterDelay(int value){
-    qDebug() << "afterDelay ="<<value;
     afterDelay = value;
 }
 
 void TriggerBot::setBeforeDelay(int value){
-    qDebug() << "beforeDelay ="<<value;
     beforeDelay = value;
 }

@@ -20,12 +20,13 @@ ApplicationWindow {
         width: parent.width
         background: Rectangle { color: "#2c3e50"; width: parent.width; height: parent.height;}
         CustomTabButton {
+            id: triggerBotTab
             text: "Trigger Bot"
-            width: 130
+            width: 140
         }
         CustomTabButton {
             text: "Bunny hop"
-            width: 100
+            width: 130
         }
     }
     Rectangle {
@@ -64,8 +65,8 @@ ApplicationWindow {
                             value: 100
                             unit: "ms"
                             step: 5
-                            from: 5
-                            to: 185
+                            from: 0
+                            to: 385
                             onValueChanged: triggerbot.setBeforeDelay(value)
                         }
                     }
@@ -86,15 +87,15 @@ ApplicationWindow {
                             value: 100
                             unit: "ms"
                             step: 5
-                            from: 5
-                            to: 185
+                            from: 0
+                            to: 385
                             onValueChanged: triggerbot.setAfterDelay(value)
                         }
                     }
                 }
             }
             CustomButton {
-                width: 160
+                width: 120
                 text: "Disabled"
                 anchors.right: parent.right
                 anchors.rightMargin: 8
@@ -103,9 +104,11 @@ ApplicationWindow {
                     if(triggerbot.isEnabled()){
                         triggerbot.setEnabled(false);
                         text = "Disabled";
+                        triggerBotTab.showInjector = false
                     } else {
                         triggerbot.setEnabled(true);
                         text = "Enabled"
+                        triggerBotTab.showInjector = true
                     }
                 }
             }
