@@ -28,6 +28,7 @@ Item {
                 textRow.assign();
             }
         }
+        root.valueChanged(root.value)
     }
 
     Row {

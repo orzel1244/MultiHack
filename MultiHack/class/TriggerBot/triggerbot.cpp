@@ -11,17 +11,6 @@ void TriggerBot::shoot(){
     mouse_event(MOUSEEVENTF_LEFTUP, NULL, NULL, NULL, NULL);
 }
 
-void TriggerBot::setAfterDelay(int value)
-{
-    afterDelay = value;
-}
-
-void TriggerBot::setBeforeDelay(int value)
-{
-    beforeDelay = value;
-}
-
-
 // 5832996 - scout
 // 33751331 - AWP
 void TriggerBot::loop(){
@@ -60,4 +49,14 @@ void TriggerBot::setEnabled(bool value){
 
 bool TriggerBot::isEnabled(){
     return enabled;
+}
+
+void TriggerBot::setAfterDelay(int value){
+    qDebug() << "afterDelay ="<<value;
+    afterDelay = value;
+}
+
+void TriggerBot::setBeforeDelay(int value){
+    qDebug() << "beforeDelay ="<<value;
+    beforeDelay = value;
 }
