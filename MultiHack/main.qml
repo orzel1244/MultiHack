@@ -58,6 +58,14 @@ ApplicationWindow {
                     from: 5
                     to: 185
                 }
+                CustomSpinBox {
+                    width: 190
+                    value: 100
+                    unit: "ms"
+                    step: 5
+                    from: 5
+                    to: 185
+                }
             }
         }
         Item {

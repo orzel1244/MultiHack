@@ -7,6 +7,13 @@ Button {
     height: 40
     property int minW
     property int minH
+    font.family: roboto.name
+    font.pointSize: 11
+    FontLoader {
+        id: roboto
+        source: "../assets/fonts/Roboto-Light.ttf"
+    }
+
     Component.onCompleted: {
         minW = width
         minH = height
@@ -80,7 +87,11 @@ Button {
         onClicked: {
             control.clicked();
         }
+        onCanceled: {
+            control.canceled()
+        }
         onReleased: {
+            control.released()
             wAnimOut.start()
             hAnimOut.start()
         }
