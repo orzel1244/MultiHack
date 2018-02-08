@@ -47,6 +47,6 @@ DWORD Memory::read(DWORD address){
     return value;
 }
 
-void Memory::write(DWORD address, DWORD value){
-    WriteProcessMemory(hProcess, (LPVOID)address, &value, sizeof(value), NULL);
+void Memory::write(DWORD dwAddress, DWORD value){
+    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(value), NULL);
 }

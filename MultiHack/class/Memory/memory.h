@@ -14,7 +14,7 @@ public:
     Memory();
     bool attachProcess();
     DWORD read(DWORD address);
-    void write(DWORD address, DWORD value);
+    void write(DWORD dwAddress, DWORD value);
     DWORD getModule(char* ModuleName);
     HWND hwnd;
 private:
