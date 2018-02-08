@@ -6,5 +6,8 @@
         <file>components/CustomButton.qml</file>
         <file>components/CustomSpinBox.qml</file>
         <file>assets/fonts/Roboto-Light.ttf</file>
+        <file>pages/TriggerBotPage.qml</file>
+        <file>pages/BunnyHopPage.qml</file>
+        <file>components/KeyPicker.qml</file>
     </qresource>
 </RCC>
