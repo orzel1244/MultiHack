@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <class/Offsets/offsets.h>
 #include <class/Manager/manager.h>
+#include <class/KeyTranslator/keytranslator.h>
 #include <QQmlContext>
 
 int main(int argc, char *argv[]){
@@ -15,6 +16,8 @@ int main(int argc, char *argv[]){
     QQmlContext* ctx = engine.rootContext();
     Manager mgr(ctx);
     ctx->setContextProperty("manager", &mgr);
+    KeyTranslator ktr;
+    ctx->setContextProperty("keyTranslator", &ktr);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

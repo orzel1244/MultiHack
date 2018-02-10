@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     class/Offsets/offsets.cpp \
     class/Manager/manager.cpp \
     class/TriggerBot/triggerbot.cpp \
-    class/Memory/memory.cpp
+    class/Memory/memory.cpp \
+    class/KeyTranslator/keytranslator.cpp
 
 RESOURCES += qml.qrc
 
@@ -35,7 +36,8 @@ HEADERS += \
     class/Offsets/offsets.h \
     class/Manager/manager.h \
     class/TriggerBot/triggerbot.h \
-    class/Memory/memory.h
+    class/Memory/memory.h \
+    class/KeyTranslator/keytranslator.h
 
 LIBS += -LC:/OpenSSL-Win32/lib/MinGW -leay32
 INCLUDEPATH += C:/OpenSSL-Win32/include/openssl
