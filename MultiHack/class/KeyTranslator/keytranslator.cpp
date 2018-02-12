@@ -1,6 +1,7 @@
 #include "keytranslator.h"
 
 KeyTranslator::KeyTranslator(QObject *parent) : QObject(parent){
+    add("SPACE", 0x20);
     add("A", 0x41);
     add("B", 0x42);
     add("C", 0x43);

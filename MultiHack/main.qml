@@ -26,6 +26,7 @@ ApplicationWindow {
             width: 140
         }
         CustomTabButton {
+            id: bunnyHopTab
             text: "Bunny hop"
             width: 130
         }

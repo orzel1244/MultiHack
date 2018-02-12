@@ -36,12 +36,13 @@ Item {
             case 16777251:
                 root.keyName="ALT";
                 break;
-                // root.keyName="RMB";
+            case 32:
+                root.keyName="SPACE";
+                break;
             default:
                 root.keyName=event.text.toUpperCase();
                 break;
             }
-            console.log(event.key);
             txt.text = "Binded: "+root.keyName
             root.isListening = false
             root.focus = false

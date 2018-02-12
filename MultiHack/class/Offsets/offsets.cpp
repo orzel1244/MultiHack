@@ -62,4 +62,6 @@ void Offsets::gotHttp() {
         file.close();
     }
     emit ready();
+    delete manager;
+    delete reply;
 }
