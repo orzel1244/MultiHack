@@ -6,9 +6,7 @@ TriggerBot::TriggerBot(Offsets *off, Memory *mem) : QObject(off) {
 }
 
 void TriggerBot::shoot(){
-    mouse_event(MOUSEEVENTF_LEFTDOWN,NULL,NULL,NULL,NULL);
-    Sleep(10);
-    mouse_event(MOUSEEVENTF_LEFTUP, NULL, NULL, NULL, NULL);
+    m_memory->write(m_memory->getModule("client.dll")+m_offsets->getAddress("dwForceAttack"), 6);
     Sleep(afterDelay);
 }
 

@@ -8,7 +8,10 @@ bool Memory::attachProcess(){
 //    if(hwnd == INVALID_HANDLE_VALUE){
         hwnd = FindWindow(NULL,L"Counter-Strike: Global Offensive");
         GetWindowThreadProcessId(hwnd,&processId);
-        hProcess = OpenProcess(PROCESS_VM_READ, false, processId);
+        hProcess = OpenProcess(PROCESS_VM_READ |
+                               PROCESS_QUERY_INFORMATION |
+                               PROCESS_VM_WRITE |
+                               PROCESS_VM_OPERATION, false, processId);
 //    }
 }
 
@@ -48,5 +51,5 @@ DWORD Memory::read(DWORD address){
 }
 
 void Memory::write(DWORD dwAddress, DWORD value){
-    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(value), NULL);
+    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(long), 0);
 }
