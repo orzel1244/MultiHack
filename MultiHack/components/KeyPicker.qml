@@ -5,10 +5,19 @@ Item {
     id: root
     width: 120
     height: 40
-    property string text: "Binded: F"
+    signal accepted
+    property string text: "Binded: "+keyName
+    property string keyName
     property bool isListening: false
     property color fontColor1: "#bdc3c7"
     property color fontColor2: "#ffffff"
+    function askForKey(){
+        if(!root.isListening){
+            txt.text = "Press Key"
+        }
+        root.isListening = true
+        root.focus = true
+    }
     Timer {
         id: focusTimer
         interval: 500; running: root.focus; repeat: true
@@ -25,15 +34,19 @@ Item {
         if(root.isListening){
             switch(event.key){
             case 16777251:
-                txt.text = "Binded: ALT"
+                root.keyName="ALT";
                 break;
+                // root.keyName="RMB";
             default:
-                txt.text = "Binded: "+event.text.toUpperCase();
+                root.keyName=event.text.toUpperCase();
                 break;
             }
+            console.log(event.key);
+            txt.text = "Binded: "+root.keyName
             root.isListening = false
             root.focus = false
             txt.color = root.fontColor1
+            root.accepted()
         }
     }
     FontLoader {
@@ -73,11 +86,7 @@ Item {
             }
         }
         onClicked: {
-            if(!root.isListening){
-                txt.text = "Press Key"
-            }
-            root.isListening = true
-            root.focus = true
+            root.askForKey()
         }
     }
 }

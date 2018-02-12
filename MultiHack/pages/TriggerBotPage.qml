@@ -65,7 +65,16 @@ Item {
             }
         }
         KeyPicker {
-
+            id: picker
+            keyName: "ALT"
+            onAccepted: {
+                var a = keyTranslator.getCode(keyName);
+                if(a === 404){
+                    askForKey()
+                } else {
+                    triggerbot.setBindKey(keyTranslator.getCode(keyName))
+                }
+            }
         }
     }
     CustomButton {

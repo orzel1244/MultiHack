@@ -18,7 +18,6 @@ int main(int argc, char *argv[]){
     ctx->setContextProperty("manager", &mgr);
     KeyTranslator ktr;
     ctx->setContextProperty("keyTranslator", &ktr);
-
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

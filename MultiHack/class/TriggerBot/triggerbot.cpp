@@ -12,10 +12,15 @@ void TriggerBot::shoot(){
     Sleep(afterDelay);
 }
 
+void TriggerBot::setBindKey(int value){
+    bindKey = value;
+    qDebug() << bindKey;
+}
+
 // 5832996 - scout
 // 33751331 - AWP
 void TriggerBot::loop(){
-    if(enabled){
+    if(enabled && GetAsyncKeyState( bindKey )){
         DWORD player = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwLocalPlayer"));
         DWORD playerWeapon = m_memory->read(player+m_offsets->getAddress("m_hActiveWeapon"));
         DWORD isPlayerScoping = m_memory->read(player+m_offsets->getAddress("m_bIsScoped"));
@@ -33,9 +38,6 @@ void TriggerBot::loop(){
                     //                trigger
                     qDebug() << "shoot";
                     Sleep(beforeDelay);
-                    if(isPlayerScoping){
-                        Sleep(150); // additional 150 ms for scopers.
-                    }
                     shoot();
                 }
             }

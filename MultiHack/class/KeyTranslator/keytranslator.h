@@ -11,8 +11,9 @@ class KeyTranslator : public QObject
     Q_OBJECT
 public:
     explicit KeyTranslator(QObject *parent = nullptr);
-    int getCode(QString key);
     QMap<QString, int> keyCodes;
+public slots:
+    int getCode(QString key);
 private:
     void add(QString v0, int v1);
 
