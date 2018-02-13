@@ -6,6 +6,7 @@
 #include <class/TriggerBot/triggerbot.h>
 #include <class/Memory/memory.h>
 #include <class/BunnyHop/bunnyhop.h>
+#include <class/Misc/misc.h>
 #include <QQmlContext>
 #include <QDebug>
 #include <QTimer>
@@ -22,6 +23,7 @@ private:
     TriggerBot* m_triggerBot;
     BunnyHop* m_bhop;
     Memory* m_memory;
+    Misc* m_misc;
 
     QQmlContext* m_ctx;
 public slots:

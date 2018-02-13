@@ -30,6 +30,11 @@ ApplicationWindow {
             text: "Bunny hop"
             width: 130
         }
+        CustomTabButton {
+            id: miscPage
+            text: "Misc"
+            width: 60
+        }
     }
     Rectangle {
         anchors.fill: parent
@@ -40,5 +45,6 @@ ApplicationWindow {
         currentIndex: bar.currentIndex
         TriggerBotPage { }
         BunnyHopPage { }
+        MiscPage { }
     }
 }

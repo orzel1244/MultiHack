@@ -9,5 +9,7 @@
         <file>pages/TriggerBotPage.qml</file>
         <file>pages/BunnyHopPage.qml</file>
         <file>components/KeyPicker.qml</file>
+        <file>pages/MiscPage.qml</file>
+        <file>components/CustomCheckBox.qml</file>
     </qresource>
 </RCC>

@@ -12,6 +12,7 @@ void Manager::start(){
     qDebug() << "Manager is ready to start";
     m_triggerBot = new TriggerBot(m_offsets, m_memory);
     m_bhop = new BunnyHop(m_offsets, m_memory);
+    m_misc = new Misc(m_offsets, m_memory);
 
     QTimer *triggerBotTimer = new QTimer;
     connect(triggerBotTimer, SIGNAL(timeout()), m_triggerBot, SLOT(loop()));
@@ -23,7 +24,12 @@ void Manager::start(){
     bhopTimer->setInterval(0);
     bhopTimer->start(0);
 
+    QTimer *miscTimer = new QTimer;
+    connect(miscTimer, SIGNAL(timeout()), m_misc, SLOT(loop()));
+    miscTimer->setInterval(0);
+    miscTimer->start(0);
+
     m_ctx->setContextProperty("triggerbot", m_triggerBot);
     m_ctx->setContextProperty("bunnyhop", m_bhop);
-//    m_ctx->setContextProperty("triggerbot", &m_triggerBot);
+    m_ctx->setContextProperty("misc", m_misc);
 }

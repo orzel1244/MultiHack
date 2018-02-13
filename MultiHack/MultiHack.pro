@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     class/TriggerBot/triggerbot.cpp \
     class/Memory/memory.cpp \
     class/KeyTranslator/keytranslator.cpp \
-    class/BunnyHop/bunnyhop.cpp
+    class/BunnyHop/bunnyhop.cpp \
+    class/Misc/misc.cpp
 
 RESOURCES += qml.qrc
 
@@ -39,7 +40,8 @@ HEADERS += \
     class/TriggerBot/triggerbot.h \
     class/Memory/memory.h \
     class/KeyTranslator/keytranslator.h \
-    class/BunnyHop/bunnyhop.h
+    class/BunnyHop/bunnyhop.h \
+    class/Misc/misc.h
 
 LIBS += -LC:/OpenSSL-Win32/lib/MinGW -leay32
 INCLUDEPATH += C:/OpenSSL-Win32/include/openssl

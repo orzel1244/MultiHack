@@ -28,9 +28,6 @@ void TriggerBot::loop(){
             if(crosshair > 0 && crosshair < 40){
                 DWORD ent = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwEntityList")+(crosshair-1)*0x10);
                 DWORD entTeam = m_memory->read(ent+m_offsets->getAddress("m_iTeamNum"));
-
-                DWORD glowManager = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwGlowObjectManager"));
-
                 qDebug() << crosshair << entTeam << playerTeam;
                 if(entTeam != playerTeam){
                     //                trigger
