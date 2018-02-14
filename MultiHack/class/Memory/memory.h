@@ -13,8 +13,9 @@ class Memory{
 public:
     Memory();
     bool attachProcess();
-    DWORD read(DWORD address);
+    int read(DWORD address);
     void write(DWORD dwAddress, DWORD value);
+    void writeFloat(DWORD dwAddress, float value);
     DWORD getModule(char* ModuleName);
     HWND hwnd;
 private:

@@ -17,20 +17,23 @@ Item {
         height: parent.height-15
         spacing: 8
         Item{width: 1; height: 3;}
-        GridLayout{
-            columns: 2
-            columnSpacing: 25
-            CustomCheckBox {
-                text: qsTr("No Flash")
-                onClicked: {
-                    misc.setNoFlash(checked)
-                }
-            }
-            CustomCheckBox {
-                text: qsTr("Radar")
-                onClicked: {
-                    misc.setRadar(checked)
-                }
+
+    }
+    CustomButton {
+        width: 120
+        text: "Disabled"
+        anchors.right: parent.right
+        anchors.rightMargin: 8
+        y: window.height-(height*2)-8
+        onClicked: {
+            if(glow.isEnabled()){
+                glow.setEnabled(false);
+                text = "Disabled";
+                glowTab.showInjector = false
+            } else {
+                glow.setEnabled(true);
+                text = "Enabled"
+                glowTab.showInjector = true
             }
         }
     }

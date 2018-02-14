@@ -44,11 +44,15 @@ DWORD Memory::getModule(char *ModuleName){
     return 0;
 }
 
-DWORD Memory::read(DWORD address){
+int Memory::read(DWORD address){
     DWORD value;
     ReadProcessMemory(hProcess, (LPVOID)address, &value,sizeof(long),0);
     return value;
 }
 void Memory::write(DWORD dwAddress, DWORD value){
     WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(long), 0);
+}
+
+void Memory::writeFloat(DWORD dwAddress, float value){
+    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(float), NULL);
 }

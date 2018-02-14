@@ -13,6 +13,7 @@ void Manager::start(){
     m_triggerBot = new TriggerBot(m_offsets, m_memory);
     m_bhop = new BunnyHop(m_offsets, m_memory);
     m_misc = new Misc(m_offsets, m_memory);
+    m_glow = new Glow(m_offsets, m_memory);
 
     QTimer *triggerBotTimer = new QTimer;
     connect(triggerBotTimer, SIGNAL(timeout()), m_triggerBot, SLOT(loop()));
@@ -29,7 +30,13 @@ void Manager::start(){
     miscTimer->setInterval(0);
     miscTimer->start(0);
 
+    QTimer *glowTimer = new QTimer;
+    connect(glowTimer, SIGNAL(timeout()), m_glow, SLOT(loop()));
+    glowTimer->setInterval(0);
+    glowTimer->start(0);
+
     m_ctx->setContextProperty("triggerbot", m_triggerBot);
     m_ctx->setContextProperty("bunnyhop", m_bhop);
     m_ctx->setContextProperty("misc", m_misc);
+    m_ctx->setContextProperty("glow", m_glow);
 }

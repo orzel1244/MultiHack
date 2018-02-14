@@ -11,5 +11,6 @@
         <file>components/KeyPicker.qml</file>
         <file>pages/MiscPage.qml</file>
         <file>components/CustomCheckBox.qml</file>
+        <file>pages/GlowPage.qml</file>
     </qresource>
 </RCC>

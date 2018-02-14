@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     class/Memory/memory.cpp \
     class/KeyTranslator/keytranslator.cpp \
     class/BunnyHop/bunnyhop.cpp \
-    class/Misc/misc.cpp
+    class/Misc/misc.cpp \
+    class/Glow/glow.cpp
 
 RESOURCES += qml.qrc
 
@@ -41,7 +42,8 @@ HEADERS += \
     class/Memory/memory.h \
     class/KeyTranslator/keytranslator.h \
     class/BunnyHop/bunnyhop.h \
-    class/Misc/misc.h
+    class/Misc/misc.h \
+    class/Glow/glow.h
 
 LIBS += -LC:/OpenSSL-Win32/lib/MinGW -leay32
 INCLUDEPATH += C:/OpenSSL-Win32/include/openssl

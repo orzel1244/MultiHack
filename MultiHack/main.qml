@@ -7,7 +7,7 @@ import "pages"
 ApplicationWindow {
     id: window
     visible: true
-    width: 430
+    width: 460
     height: 250
     title: qsTr("MultiHack")
     minimumWidth: 420
@@ -31,10 +31,16 @@ ApplicationWindow {
             width: 130
         }
         CustomTabButton {
-            id: miscPage
+            id: glowTab
+            text: "Glow"
+            width: 85
+        }
+        CustomTabButton {
+            id: miscTab
             text: "Misc"
             width: 60
         }
+
     }
     Rectangle {
         anchors.fill: parent
@@ -45,6 +51,7 @@ ApplicationWindow {
         currentIndex: bar.currentIndex
         TriggerBotPage { }
         BunnyHopPage { }
+        GlowPage { }
         MiscPage { }
     }
 }
