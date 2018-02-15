@@ -33,7 +33,7 @@ Item {
                 }
                 CustomSpinBox {
                     width: 190
-                    value: 100
+                    value: 15
                     unit: "ms"
                     step: 5
                     from: 0
@@ -55,7 +55,7 @@ Item {
                 }
                 CustomSpinBox {
                     width: 190
-                    value: 100
+                    value: 35
                     unit: "ms"
                     step: 5
                     from: 0
@@ -64,15 +64,33 @@ Item {
                 }
             }
         }
-        KeyPicker {
-            id: picker
-            keyName: "ALT"
-            onAccepted: {
-                var a = keyTranslator.getCode(keyName);
-                if(a === 404){
-                    askForKey()
-                } else {
-                    triggerbot.setBindKey(keyTranslator.getCode(keyName))
+        Row {
+            spacing: 6
+            CustomCheckBox {
+                id: checkBox
+                checked: true
+                text: "Key"
+                onClicked: {
+                    changed()
+                }
+                function changed(){
+                    triggerbot.setBindEnabled(checked)
+                }
+            }
+            KeyPicker {
+                id: picker
+                keyName: "ALT"
+                onAccepted: {
+                    var a = keyTranslator.getCode(keyName);
+                    if(a === 404){
+                        askForKey()
+                    } else {
+                        triggerbot.setBindKey(keyTranslator.getCode(keyName))
+                    }
+                    if(!checkBox.checked){
+                        checkBox.checked = true
+                        checkBox.changed()
+                    }
                 }
             }
         }
