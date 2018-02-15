@@ -54,4 +54,58 @@ ApplicationWindow {
         GlowPage { }
         MiscPage { }
     }
+
+    Rectangle {
+        id: rect
+        enabled: true
+        color: "#34495e"
+        anchors.fill: parent
+        function check(){
+            if(anti.pass(tf.text)){
+                rect.enabled = false
+                rect.visible = false
+            } else {
+                tf.text = ""
+            }
+        }
+
+        Column {
+            id: column
+            width: parent.width-80
+            height: parent.width
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 16
+            Item {width: 1; height: 3;}
+            Text {
+                width: 370
+                color: "#f9f9f9"
+                text: "This is anti noob protection, you can't access the cheat unless you know password. \nContact Maciej Rosiak"
+                font.family: roboto.name
+                wrapMode: Text.WordWrap
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pointSize: 12
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+            }
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: 6
+                TextField {
+                    id: tf
+                    focus: true
+                    echoMode: TextInput.Password
+                    placeholderText: "Enter Password"
+                    Keys.onReturnPressed: {
+                        rect.check()
+                    }
+                }
+                CustomButton {
+                    text: "Ok"
+                    onClicked: {
+                        rect.check()
+                    }
+                }
+            }
+        }
+    }
 }

@@ -6,6 +6,7 @@
 #include <class/TriggerBot/triggerbot.h>
 #include <class/Memory/memory.h>
 #include <class/BunnyHop/bunnyhop.h>
+#include <class/AntiScriptKiddie/antiscriptkiddie.h>
 #include <class/Glow/glow.h>
 #include <class/Misc/misc.h>
 #include <QQmlContext>
@@ -26,6 +27,7 @@ private:
     Memory* m_memory;
     Misc* m_misc;
     Glow* m_glow;
+    AntiScriptKiddie* m_antiScriptKiddie;
 
     QQmlContext* m_ctx;
 public slots:
