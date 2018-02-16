@@ -15,6 +15,9 @@ bool Glow::isEnabled(){
 
 void Glow::loop(){
     if(enabled){
+        // perf
+        auto t1 = std::chrono::high_resolution_clock::now();
+
         DWORD glowManager = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwGlowObjectManager"));
         DWORD player = m_memory->read(m_memory->getModule("client.dll")+
                                       m_offsets->getAddress("dwLocalPlayer"));
@@ -45,5 +48,9 @@ void Glow::loop(){
                 m_memory->write(glowManager+(glowIndex * 0x38)+0x25, 0);
             }
         }
+        auto t2 = std::chrono::high_resolution_clock::now();
+        auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
+        std::chrono::duration<long, std::micro> int_usec = int_ms;
+        std::cout << int_usec.count() << std::endl;
     }
 }

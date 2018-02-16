@@ -12,6 +12,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
+#include <QMap>
+#include <windows.h>
 
 class Offsets : public QObject {
     Q_OBJECT
@@ -24,8 +26,8 @@ signals:
 public slots:
     int getAddress(QString name);
     void gotHttp();
-
 private:
+    QMap <QString, DWORD> cache;
     QNetworkReply *reply;
     QNetworkAccessManager *manager;
 };

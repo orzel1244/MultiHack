@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <cstring>
 #include <QDebug>
+#include <QMap>
 
 class Memory{
 public:
@@ -21,7 +22,7 @@ public:
 private:
     DWORD processId;
     HANDLE hProcess;
-    DWORD m_module = 0x0;
+    QMap<QString, DWORD> cache;
 
 
 };

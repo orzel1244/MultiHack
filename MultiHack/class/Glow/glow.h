@@ -5,6 +5,10 @@
 #include <class/Memory/memory.h>
 #include <class/Offsets/offsets.h>
 #include <QDebug>
+#include <chrono>
+#include <ctime>
+#include <ratio>
+#include <iostream>
 
 class Glow : public QObject {
     Q_OBJECT

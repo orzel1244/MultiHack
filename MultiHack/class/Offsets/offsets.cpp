@@ -17,6 +17,9 @@ void Offsets::update(){
 }
 
 int Offsets::getAddress(QString name){
+    if(cache.contains(name)){
+        return cache.value(name);
+    }
     QJsonDocument doc;
     QFile file("offsets.min.json");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
@@ -36,10 +39,12 @@ int Offsets::getAddress(QString name){
             QJsonObject obj(doc.object());
             QJsonObject signatures=obj.value("signatures").toObject();
             if(!signatures.value(name).isUndefined()){
+                cache.insert(name, signatures.value(name).toInt());
                 return signatures.value(name).toInt();
             } else {
                 QJsonObject netvars=obj.value("netvars").toObject();
                 if(!netvars.value(name).isUndefined()){
+                    cache.insert(name, netvars.value(name).toInt());
                     return netvars.value(name).toInt();
                 }
             }
