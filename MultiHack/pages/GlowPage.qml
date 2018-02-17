@@ -17,7 +17,13 @@ Item {
         height: parent.height-15
         spacing: 8
         Item{width: 1; height: 3;}
-
+        CustomCheckBox {
+            checked: false
+            text: "Glow Team"
+            onClicked: {
+                glow.setGlowTeam(checked)
+            }
+        }
     }
     CustomButton {
         width: 120

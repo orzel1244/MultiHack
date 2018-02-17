@@ -5,6 +5,8 @@
 #include <class/Offsets/offsets.h>
 #include <class/Memory/memory.h>
 #include <QDebug>
+#include <chrono>
+#include <thread>
 
 class TriggerBot : public QObject{
     Q_OBJECT

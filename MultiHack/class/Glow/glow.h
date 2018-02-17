@@ -31,10 +31,12 @@ private:
     Offsets* m_offsets;
     Memory* m_memory;
     bool enabled=false;
+    bool glowTeam=false;
 public slots:
     void setEnabled(bool value);
     bool isEnabled();
     void loop();
+    void setGlowTeam(bool value);
 };
 
 #endif // GLOW_H
