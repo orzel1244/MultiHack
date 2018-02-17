@@ -14,7 +14,7 @@ void Misc::loop(){
         DWORD player = m_memory->read(m_memory->getModule("client.dll")+
                                       m_offsets->getAddress("dwLocalPlayer"));
         DWORD playerTeam = m_memory->read(player+m_offsets->getAddress("m_iTeamNum"));
-        for(int i=0; i<=32; i++){
+        for(int i=1; i<=20; i++){
             DWORD theEnt = m_memory->read(m_memory->getModule("client.dll")+
                                           m_offsets->getAddress("dwEntityList")+
                                           (i-1)*0x10);

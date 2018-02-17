@@ -48,10 +48,13 @@ int Memory::read(DWORD address){
     ReadProcessMemory(hProcess, (LPVOID)address, &value,sizeof(long),0);
     return value;
 }
-void Memory::write(DWORD dwAddress, DWORD value){
-    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(long), 0);
-}
 
-void Memory::writeFloat(DWORD dwAddress, float value){
-    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(float), NULL);
-}
+
+
+//void Memory::write(DWORD dwAddress, DWORD value){
+//    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(long), 0);
+//}
+
+//void Memory::writeFloat(DWORD dwAddress, float value){
+//    WriteProcessMemory(hProcess, (LPVOID)dwAddress, &value, sizeof(float), NULL);
+//}

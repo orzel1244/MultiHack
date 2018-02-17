@@ -16,41 +16,31 @@ bool Glow::isEnabled(){
 void Glow::loop(){
     if(enabled){
         // perf
-        auto t1 = std::chrono::high_resolution_clock::now();
+//        auto t1 = std::chrono::high_resolution_clock::now();
 
         DWORD glowManager = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwGlowObjectManager"));
         DWORD player = m_memory->read(m_memory->getModule("client.dll")+
                                       m_offsets->getAddress("dwLocalPlayer"));
         DWORD playerTeam = m_memory->read(player+m_offsets->getAddress("m_iTeamNum"));
-        for(int i=0; i<=32; i++){
+        for(int i=1; i<=32; i++){
             DWORD theEnt = m_memory->read(m_memory->getModule("client.dll")+
                                           m_offsets->getAddress("dwEntityList")+
                                           (i-1)*0x10);
             DWORD glowIndex = m_memory->read(theEnt+m_offsets->getAddress("m_iGlowIndex"));
             DWORD entTeam = m_memory->read(theEnt+m_offsets->getAddress("m_iTeamNum"));
             DWORD classID = m_memory->read(theEnt+0x14);
+
+
             if(classID == 0){ // classId = player
                 if(entTeam != playerTeam ){
-                    m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0x4, 1.f); // r
-                    m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0xB, 0.0f); // g
-                    m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0xC, 0.0f); // b
-                    m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0x10, 1.f);
+                    m_memory->write(glowManager+(glowIndex * 0x38)+0x4, Color(1.f,0,0,0.7f)); // rgba
                     m_memory->write(glowManager+(glowIndex * 0x38)+0x24, 1);
-                    m_memory->write(glowManager+(glowIndex * 0x38)+0x25, 0);
                 }
             }
-            if(classID == 2760 || classID == 1356){
-                m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0x4, 1.f); // r
-                m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0xB, 0.0f); // g
-                m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0xC, 0.0f); // b
-                m_memory->writeFloat(glowManager+(glowIndex * 0x38)+0x10, 1.f);
-                m_memory->write(glowManager+(glowIndex * 0x38)+0x24, 1);
-                m_memory->write(glowManager+(glowIndex * 0x38)+0x25, 0);
-            }
         }
-        auto t2 = std::chrono::high_resolution_clock::now();
-        auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
-        std::chrono::duration<long, std::micro> int_usec = int_ms;
-        std::cout << int_usec.count() << std::endl;
+//        auto t2 = std::chrono::high_resolution_clock::now();
+//        auto int_ms = std::chrono::duration_cast<std::chrono::microseconds>(t2-t1);
+//        std::chrono::duration<long, std::micro> int_usec = int_ms;
+//        std::cout << int_usec.count() << std::endl;
     }
 }

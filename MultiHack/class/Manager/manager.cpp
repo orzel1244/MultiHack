@@ -16,6 +16,7 @@ void Manager::start(){
     m_misc = new Misc(m_offsets, m_memory);
     m_glow = new Glow(m_offsets, m_memory);
 
+
     QTimer *triggerBotTimer = new QTimer;
     connect(triggerBotTimer, SIGNAL(timeout()), m_triggerBot, SLOT(loop()));
     triggerBotTimer->setInterval(0);
@@ -34,7 +35,12 @@ void Manager::start(){
     QTimer *glowTimer = new QTimer;
     connect(glowTimer, SIGNAL(timeout()), m_glow, SLOT(loop()));
     glowTimer->setInterval(0);
+//    glowTimer->start(0);
     glowTimer->start(0);
+    qDebug() << "manager thread: "<<QThread::currentThreadId();
+
+
+
 
     m_ctx->setContextProperty("triggerbot", m_triggerBot);
     m_ctx->setContextProperty("bunnyhop", m_bhop);

@@ -12,6 +12,7 @@
 #include <QQmlContext>
 #include <QDebug>
 #include <QTimer>
+#include <QtConcurrent>
 
 class Manager : public QObject{
     Q_OBJECT
@@ -32,7 +33,6 @@ private:
     QQmlContext* m_ctx;
 public slots:
     void start();
-
 
 };
 
