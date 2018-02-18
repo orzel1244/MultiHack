@@ -20,6 +20,7 @@ bool TriggerBot::isSniper(int w){
     return false;
 }
 
+
 void TriggerBot::setBindEnabled(bool value){
     bindEnabled = value;
 }

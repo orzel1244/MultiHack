@@ -5,6 +5,10 @@ Glow::Glow(Offsets *off, Memory *mem) : QObject(off){
     m_offsets = off;
 }
 
+bool Glow::isDefusing(int ent){
+    m_memory->read(ent+m_offsets->getAddress("m_bIsDefusing"));
+}
+
 void Glow::setEnabled(bool value){
     enabled = value;
 }
@@ -34,20 +38,17 @@ void Glow::loop(){
             DWORD entTeam = m_memory->read(theEnt+m_offsets->getAddress("m_iTeamNum"));
 
             if(entTeam != playerTeam ){
-                m_memory->write(glowManager+(glowIndex * 0x38)+0x4, Color(1.f, //r
-                                                                          0, //g
-                                                                          0, //b
-                                                                          0.7f)); // a
-                m_memory->write(glowManager+(glowIndex * 0x38)+0x24, 1);
+                if(isDefusing(theEnt)){
+                    m_memory->write(glowManager+(glowIndex * 0x38)+0x4, highlightColor);
+                }else {
+                    m_memory->write(glowManager+(glowIndex * 0x38)+0x4, enemyTeamColor);
+                }
             } else {
                 if(glowTeam){
-                    m_memory->write(glowManager+(glowIndex * 0x38)+0x4, Color(0.f, // r
-                                                                              1.0f, // g
-                                                                              0, // b
-                                                                              0.7f)); // a
-                    m_memory->write(glowManager+(glowIndex * 0x38)+0x24, 1);
+                    m_memory->write(glowManager+(glowIndex * 0x38)+0x4, myTeamColor);
                 }
             }
+            m_memory->write(glowManager+(glowIndex * 0x38)+0x24, 1);
         }
         //        auto t2 = std::chrono::high_resolution_clock::now();
         //        auto int_ms = std::chrono::duration_cast<std::chrono::microseconds>(t2-t1);

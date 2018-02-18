@@ -32,6 +32,10 @@ private:
     Memory* m_memory;
     bool enabled=false;
     bool glowTeam=false;
+    bool isDefusing(int ent);
+    Color myTeamColor =     Color(0.f, 1.0f, 0.0f, 0.7f);
+    Color enemyTeamColor =  Color(1.f, 0.0f, 0.0f, 0.7f);
+    Color highlightColor =  Color(0.f, 0.0f, 1.0f, 0.7f);
 public slots:
     void setEnabled(bool value);
     bool isEnabled();
