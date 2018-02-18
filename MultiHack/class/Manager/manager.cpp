@@ -1,7 +1,6 @@
 #include "manager.h"
 
 Manager::Manager(QQmlContext *ctx){
-    m_antiScriptKiddie = new AntiScriptKiddie;
     m_memory = new Memory;
     m_offsets = new Offsets;
     m_ctx = ctx;
@@ -35,9 +34,7 @@ void Manager::start(){
     QTimer *glowTimer = new QTimer;
     connect(glowTimer, SIGNAL(timeout()), m_glow, SLOT(loop()));
     glowTimer->setInterval(0);
-//    glowTimer->start(0);
     glowTimer->start(0);
-    qDebug() << "manager thread: "<<QThread::currentThreadId();
 
 
 
@@ -46,5 +43,4 @@ void Manager::start(){
     m_ctx->setContextProperty("bunnyhop", m_bhop);
     m_ctx->setContextProperty("misc", m_misc);
     m_ctx->setContextProperty("glow", m_glow);
-    m_ctx->setContextProperty("anti", m_antiScriptKiddie);
 }

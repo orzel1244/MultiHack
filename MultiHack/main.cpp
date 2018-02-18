@@ -3,6 +3,7 @@
 #include <class/Offsets/offsets.h>
 #include <class/Manager/manager.h>
 #include <class/KeyTranslator/keytranslator.h>
+#include <class/AntiScriptKiddie/antiscriptkiddie.h>
 #include <QQmlContext>
 
 int main(int argc, char *argv[]){
@@ -14,6 +15,13 @@ int main(int argc, char *argv[]){
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     QQmlContext* ctx = engine.rootContext();
+    AntiScriptKiddie an;
+    if(argc >= 3){
+        if(QString(argv[1]) == "-pass"){
+            an.auth(QString(argv[2]));
+        }
+    }
+    ctx->setContextProperty("anti", &an);
     Manager mgr(ctx);
     ctx->setContextProperty("manager", &mgr);
     KeyTranslator ktr;

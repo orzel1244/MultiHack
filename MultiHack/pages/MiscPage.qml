@@ -21,9 +21,25 @@ Item {
             columns: 2
             columnSpacing: 25
             CustomCheckBox {
+                id: noFlashCheck
                 text: qsTr("No Flash")
                 onClicked: {
+                    if(checked){
+                        silentNoFlash.checked = !checked
+                        misc.setSilentNoFlash(silentNoFlash.checked)
+                    }
                     misc.setNoFlash(checked)
+                }
+            }
+            CustomCheckBox {
+                id: silentNoFlash
+                text: qsTr("Silent No Flash")
+                onClicked: {
+                    if(checked){
+                        noFlashCheck.checked = !checked
+                        misc.setNoFlash(noFlashCheck.checked)
+                    }
+                    misc.setSilentNoFlash(checked)
                 }
             }
             CustomCheckBox {

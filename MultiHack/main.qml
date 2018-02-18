@@ -59,9 +59,10 @@ ApplicationWindow {
         id: rect
         enabled: true
         color: "#34495e"
+        visible: !anti.isAuthorized()
         anchors.fill: parent
         function check(){
-            if(anti.pass(tf.text)){
+            if(anti.auth(tf.text)){
                 rect.enabled = false
                 rect.visible = false
             } else {
