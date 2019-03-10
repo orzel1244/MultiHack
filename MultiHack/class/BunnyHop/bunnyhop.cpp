@@ -20,10 +20,10 @@ bool BunnyHop::isEnabled(){
 
 void BunnyHop::loop(){
     if(enabled && GetAsyncKeyState( bindKey )){
-        DWORD player = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwLocalPlayer"));
+        DWORD player = m_memory->read(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwLocalPlayer"));
         DWORD flag = m_memory->read(player+m_offsets->getAddress("m_fFlags"));
         if(flag == 257){
-            m_memory->write(m_memory->getModule("client.dll")+m_offsets->getAddress("dwForceJump"), 6);
+            m_memory->write(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwForceJump"), 6);
         }
     }
 }
