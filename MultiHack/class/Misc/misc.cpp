@@ -8,17 +8,17 @@ Misc::Misc(Offsets *off, Memory *mem) : QObject(off){
 
 void Misc::loop(){
     if(noFlash){
-        m_memory->write(m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwLocalPlayer"))+m_offsets->getAddress("m_flFlashDuration"), 0);
+        m_memory->write(m_memory->read(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwLocalPlayer"))+m_offsets->getAddress("m_flFlashDuration"), 0);
     }
     if(silentNoFlash){
-        m_memory->write<float>(m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwLocalPlayer"))+m_offsets->getAddress("m_flFlashMaxAlpha"), 60.0f);
+        m_memory->write<float>(m_memory->read(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwLocalPlayer"))+m_offsets->getAddress("m_flFlashMaxAlpha"), 60.0f);
     }
     if(radar){
-        DWORD player = m_memory->read(m_memory->getModule("client.dll")+
+        DWORD player = m_memory->read(m_memory->getModule("client_panorama.dll")+
                                       m_offsets->getAddress("dwLocalPlayer"));
         DWORD playerTeam = m_memory->read(player+m_offsets->getAddress("m_iTeamNum"));
         for(int i=1; i<=20; i++){
-            DWORD theEnt = m_memory->read(m_memory->getModule("client.dll")+
+            DWORD theEnt = m_memory->read(m_memory->getModule("client_panorama.dll")+
                                           m_offsets->getAddress("dwEntityList")+
                                           (i-1)*0x10);
             DWORD entTeam = m_memory->read(theEnt+m_offsets->getAddress("m_iTeamNum"));
@@ -42,7 +42,7 @@ void Misc::setRadar(bool value){
 void Misc::setSilentNoFlash(bool value){
     silentNoFlash = value;
     if(!silentNoFlash){
-        m_memory->write<float>(m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwLocalPlayer"))+m_offsets->getAddress("m_flFlashMaxAlpha"), 255.0f);
+        m_memory->write<float>(m_memory->read(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwLocalPlayer"))+m_offsets->getAddress("m_flFlashMaxAlpha"), 255.0f);
     }
 }
 
