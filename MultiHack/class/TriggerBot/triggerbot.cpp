@@ -6,7 +6,7 @@ TriggerBot::TriggerBot(Offsets *off, Memory *mem) : QObject(off) {
 }
 
 void TriggerBot::shoot(){
-    m_memory->write(m_memory->getModule("client.dll")+m_offsets->getAddress("dwForceAttack"), 6);
+    m_memory->write(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwForceAttack"), 6);
     Sleep(afterDelay);
 }
 
@@ -31,10 +31,10 @@ void TriggerBot::setBindKey(int value){
 void TriggerBot::loop(){
     if(enabled && (GetAsyncKeyState( bindKey ) || bindEnabled == false)){
         if(!GetAsyncKeyState(VK_LBUTTON)){
-            DWORD player = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwLocalPlayer"));
+            DWORD player = m_memory->read(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwLocalPlayer"));
             DWORD playerWeapon = m_memory->read(player+m_offsets->getAddress("m_hActiveWeapon"));
 
-            DWORD weaponEnt = m_memory->read(m_memory->getModule("client.dll")+
+            DWORD weaponEnt = m_memory->read(m_memory->getModule("client_panorama.dll")+
                                              m_offsets->getAddress("dwEntityList") + ((playerWeapon & 0xFFF)-1)*0x10);
             int weaponID = m_memory->read(weaponEnt+m_offsets->getAddress("m_iItemDefinitionIndex"));
             DWORD isPlayerScoping = m_memory->read(player+m_offsets->getAddress("m_bIsScoped"));
@@ -42,7 +42,7 @@ void TriggerBot::loop(){
                 DWORD playerTeam = m_memory->read(player+m_offsets->getAddress("m_iTeamNum"));
                 DWORD crosshair = m_memory->read(player+m_offsets->getAddress("m_iCrosshairId"));
                 if(crosshair > 1 && crosshair <= 65){
-                    DWORD ent = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwEntityList")+(crosshair-1)*0x10);
+                    DWORD ent = m_memory->read(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwEntityList")+(crosshair-1)*0x10);
                     DWORD entTeam = m_memory->read(ent+m_offsets->getAddress("m_iTeamNum"));
                     if(entTeam != playerTeam){
                         Sleep(beforeDelay);

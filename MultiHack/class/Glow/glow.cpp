@@ -26,12 +26,12 @@ void Glow::loop(){
     if(enabled){
         // perf
         //        auto t1 = std::chrono::high_resolution_clock::now();
-        DWORD glowManager = m_memory->read(m_memory->getModule("client.dll")+m_offsets->getAddress("dwGlowObjectManager"));
-        DWORD player = m_memory->read(m_memory->getModule("client.dll")+
+        DWORD glowManager = m_memory->read(m_memory->getModule("client_panorama.dll")+m_offsets->getAddress("dwGlowObjectManager"));
+        DWORD player = m_memory->read(m_memory->getModule("client_panorama.dll")+
                                       m_offsets->getAddress("dwLocalPlayer"));
         DWORD playerTeam = m_memory->read(player+m_offsets->getAddress("m_iTeamNum"));
         for(int i=1; i<=32; i++){
-            DWORD theEnt = m_memory->read(m_memory->getModule("client.dll")+
+            DWORD theEnt = m_memory->read(m_memory->getModule("client_panorama.dll")+
                                           m_offsets->getAddress("dwEntityList")+
                                           (i-1)*0x10);
             DWORD glowIndex = m_memory->read(theEnt+m_offsets->getAddress("m_iGlowIndex"));
